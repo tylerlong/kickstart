@@ -50,6 +50,8 @@ boilerplate-javascript-project
     - kickstart.yml
 ```
 
+Please note that, a boilerplate project must have a `kickstart.yml` file in its root directory.
+
 A sample `package.json` file:
 
 ```json
@@ -124,7 +126,7 @@ You can use some of its adanvaced features.
 
 config.yml:
 
-```
+```yml
 items:
   ketchup: 5 tbsp
   mustard: 1 tbsp

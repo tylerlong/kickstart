@@ -1,6 +1,7 @@
 {
   "name": "kickstart-cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
+  "description": "Kick start a project by generating code according to boilerplate.",
   "license": "MIT",
   "main": "index.js",
   "bin": {
@@ -19,5 +20,19 @@
     "mkdirp": "^0.5.1",
     "nunjucks": "^3.0.1",
     "ramda": "^0.25.0"
-  }
+  },
+  "homepage": "https://github.com/tylerlong/kickstart#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerlong/kickstart.git"
+  },
+  "keywords": [
+    "yeoman",
+    "boilerplate",
+    "generator",
+    "kickstart",
+    "kick-start",
+    "kick start"
+  ],
+  "author": "Tyler Long <tyler4long@gmail.com>"
 }

@@ -1,6 +1,6 @@
 # kickstart
 
-Kick start a project by generating code according to boilerplates.
+Kick start a project by generating code according to boilerplate.
 
 It's a much simpler alternative to [Yeoman](http://yeoman.io/).
 
@@ -29,7 +29,7 @@ A new project will be created at `output-directory/`, using `boilerplate-project
 
 Lots of projects look similar. For example, when I start a new JavaScript projects, I always created the following files: `README.md`, `package.json`, `.gitignore`, `.editorconfig`, `.babelrc`...etc.
 
-I want a command line utility to create those files for me.
+I wanted a command line utility to create those files for me. I checked the popular [Yeoman](http://yeoman.io/) project but failed to comprehend its work flow. I decided to create a new tool which is both flexible and straigtforward.
 
 
 ## How it works
@@ -124,7 +124,7 @@ In such case the generated `package.json` file is:
 
 You can use some of its adanvaced features.
 
-config.yml:
+`config.yml`:
 
 ```yml
 food:
@@ -146,3 +146,4 @@ Template:
 
 - detect binary files
 - auto create target directory if it doesn't exist.
+- add unit tests

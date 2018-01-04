@@ -5,6 +5,9 @@ const path = require('path')
 const fs = require('fs')
 const R = require('ramda')
 const glob = require('glob')
+const nunjucks = require('nunjucks')
+const mkdirp = require('mkdirp')
+const yaml = require('js-yaml')
 
 const pkg = require('./package.json')
 
@@ -22,12 +25,14 @@ if (!fs.existsSync(boilerplateProject)) {
   console.error(`'${boilerplateProject}' doesn't exist`)
   process.exit(1)
 }
+nunjucks.configure(boilerplateProject, { autoescape: false })
 
 const configFile = commander.configFile || path.join(commander.boilerplateProject, 'kickstart.yml')
 if (!fs.existsSync(configFile)) {
   console.error(`'${configFile}' doesn't exist`)
   process.exit(1)
 }
+const config = yaml.load(fs.readFileSync(configFile, 'utf-8'))
 
 const outputDirectory = commander.outputDirectory || '.'
 if (!fs.existsSync(outputDirectory)) {
@@ -40,9 +45,16 @@ if (fs.readdirSync(outputDirectory).length > 0) {
   process.exit(1)
 }
 
-console.log(boilerplateProject)
-console.log(configFile)
-console.log(outputDirectory)
+const files = R.concat(
+  glob.sync(path.join('**', '.*'), { cwd: boilerplateProject }),
+  glob.sync(path.join('**', '*.*'), { cwd: boilerplateProject })
+)
 
-const files = R.concat(glob.sync(path.join(boilerplateProject, '**', '.*')), glob.sync(path.join(boilerplateProject, '**', '*.*')))
-console.log(files)
+R.forEach(file => {
+  const content = nunjucks.render(file, config)
+  const targetFile = path.join(outputDirectory, file)
+  mkdirp(path.dirname(targetFile), err => {
+    if (err) { throw err }
+    fs.writeFileSync(targetFile, content)
+  })
+})(files)

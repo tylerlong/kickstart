@@ -12,6 +12,7 @@
     "yarn-upgrade-all": "^0.2.1"
   },
   "dependencies": {
-    "commander": "^2.12.2"
+    "commander": "^2.12.2",
+    "ramda": "^0.25.0"
   }
 }

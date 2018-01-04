@@ -3,6 +3,8 @@
 const commander = require('commander')
 const path = require('path')
 const fs = require('fs')
+const R = require('ramda')
+const glob = require('glob')
 
 const pkg = require('./package.json')
 
@@ -41,3 +43,6 @@ if (fs.readdirSync(outputDirectory).length > 0) {
 console.log(boilerplateProject)
 console.log(configFile)
 console.log(outputDirectory)
+
+const files = R.concat(glob.sync(path.join(boilerplateProject, '**', '.*')), glob.sync(path.join(boilerplateProject, '**', '*.*')))
+console.log(files)

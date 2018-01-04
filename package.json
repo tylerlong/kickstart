@@ -1,8 +1,11 @@
 {
   "name": "kickstart-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "main": "index.js",
+  "bin": {
+    "ks": "index.js"
+  },
   "scripts": {
     "upgrade": "yarn-upgrade-all",
     "test": "rm -rf test/new-project && mkdir test/new-project && node index.js -b test/boilerplate-project/ -o test/new-project -c test/config.yml"

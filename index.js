@@ -46,10 +46,10 @@ if (fs.readdirSync(outputDirectory).length > 0) {
   process.exit(1)
 }
 
-const files = R.concat(
+const files = R.reject(item => item === 'kickstart.yml', R.concat(
   glob.sync(path.join('**', '.*'), { cwd: boilerplateProject }),
   glob.sync(path.join('**', '*.*'), { cwd: boilerplateProject })
-)
+))
 
 R.forEach(file => {
   const content = nunjucks.render(file, config)

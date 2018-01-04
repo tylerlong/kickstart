@@ -145,3 +145,4 @@ Template:
 ## Todo
 
 - detect binary files
+- auto create target directory if it doesn't exist.

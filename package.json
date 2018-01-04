@@ -1,0 +1,9 @@
+{
+  "name": "kickstart",
+  "version": "0.1.0",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^10.0.3",
+    "yarn-upgrade-all": "^0.2.1"
+  }
+}

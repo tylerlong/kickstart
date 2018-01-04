@@ -140,3 +140,8 @@ Template:
   Use {{ amount }} of {{ ingredient }}
 {% endfor %}
 ```
+
+
+## Todo
+
+- detect binary files

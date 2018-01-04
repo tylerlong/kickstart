@@ -32,7 +32,8 @@ if (!fs.existsSync(configFile)) {
   console.error(`'${configFile}' doesn't exist`)
   process.exit(1)
 }
-const config = yaml.load(fs.readFileSync(configFile, 'utf-8'))
+const defaultConfig = yaml.load(fs.readFileSync(path.join(commander.boilerplateProject, 'kickstart.yml'), 'utf-8'))
+const config = R.merge(defaultConfig, yaml.load(fs.readFileSync(configFile, 'utf-8')))
 
 const outputDirectory = commander.outputDirectory || '.'
 if (!fs.existsSync(outputDirectory)) {

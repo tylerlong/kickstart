@@ -114,3 +114,27 @@ In such case the generated `package.json` file is:
   "license": "MIT",
 }
 ```
+
+
+## Advanced templating
+
+[Nunjucks](https://github.com/mozilla/nunjucks) is the underlying templating engine.
+
+You can use some of its adanvaced features.
+
+config.yml:
+
+```
+items:
+  ketchup: 5 tbsp
+  mustard: 1 tbsp
+  pickle: 0 tbsp
+```
+
+Template:
+
+```
+{% for ingredient, amount in food %}
+  Use {{ amount }} of {{ ingredient }}
+{% endfor %}
+```

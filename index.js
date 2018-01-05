@@ -40,18 +40,14 @@ if (fs.existsSync(outputDirectory) && fs.readdirSync(outputDirectory).length > 0
   process.exit(1)
 }
 
-const files = R.reject(item => item === 'kickstart.yml')(
-  R.concat(
-    glob.sync(path.join('**', '.*'), { cwd: boilerplateProject }),
-    glob.sync(path.join('**', '*.*'), { cwd: boilerplateProject })
-  )
-)
-
+const files = R.pipe(
+  R.concat(glob.sync(path.join('**', '.*'), { cwd: boilerplateProject })),
+  R.concat(glob.sync(path.join('**', '*.*'), { cwd: boilerplateProject })),
+  R.reject(item => item === 'kickstart.yml')
+)([])
 R.forEach(file => {
   const content = nunjucks.render(file, config)
   const targetFile = path.join(outputDirectory, file)
-  mkdirp(path.dirname(targetFile), err => {
-    if (err) { throw err }
-    fs.writeFileSync(targetFile, content)
-  })
+  mkdirp.sync(path.dirname(targetFile))
+  fs.writeFileSync(targetFile, content)
 })(files)

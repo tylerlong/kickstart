@@ -20,7 +20,7 @@ ks -b boilerplate-project -c config.yml -o output-directory
 
 A new project will be created at `output-directory`, using `boilerplate-project` as boilerplate and `config.yml` as configuration file.
 
-`-o output-directory` is optional. By default it is '.'.
+`-o output-directory` is optional. By default it is '.', a.k.a. the current directory.
 
 `-c config.yml` is also optional. The default configuration file `boilerplate-project/kickstart.yml` will be used. If you do specify a configuration file, configuration items in your configuration file will override the default ones.
 
@@ -131,7 +131,7 @@ In such case the generated `package.json` file is:
 
 [Nunjucks](https://github.com/mozilla/nunjucks) is the underlying templating engine.
 
-You can use some of its adanvaced features.
+You can use some of its [adanvaced features](https://mozilla.github.io/nunjucks/templating.html). Sample:
 
 `config.yml`:
 

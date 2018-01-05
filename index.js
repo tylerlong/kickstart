@@ -7,6 +7,7 @@ const glob = require('glob')
 const nunjucks = require('nunjucks')
 const mkdirp = require('mkdirp')
 const yaml = require('js-yaml')
+const isBinaryFile = require('isbinaryfile')
 
 const pkg = require('./package.json')
 
@@ -46,8 +47,13 @@ const files = R.pipe(
   R.reject(item => item === 'kickstart.yml')
 )([])
 R.forEach(file => {
-  const content = nunjucks.render(file, config)
   const targetFile = path.join(outputDirectory, file)
   mkdirp.sync(path.dirname(targetFile))
-  fs.writeFileSync(targetFile, content)
+  const sourceFile = path.join(boilerplateProject, file)
+  if (isBinaryFile.sync(sourceFile)) {
+    fs.createReadStream(sourceFile).pipe(fs.createWriteStream(targetFile))
+  } else {
+    const content = nunjucks.render(file, config)
+    fs.writeFileSync(targetFile, content)
+  }
 })(files)

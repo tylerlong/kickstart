@@ -46,11 +46,11 @@ I wanted a command line utility to create those files for me. I checked the popu
 
 ## How it works
 
-First of all, create a boilerplate project. The project could be of any type, any programming language.
+First of all, ask yourself: do I or my users create similar projects again and again? If the answer is no, you probably don't need this project and you can stop reading on.
 
-For strings that cannot be determined ahead of time, define them as `{{ variable }}`.
+If the answer is yes, create a boilerplate project for those similar projects to abstract the things that they have in common. For strings that each project might have a different value, define them as `{{ variable }}`.
 
-For example, I can define a boilerplate for JavaScript projects with following directory structure:
+For example, I can define a boilerplate for JavaScript projects with the following directory structure:
 
 ```
 boilerplate-javascript-project
@@ -111,6 +111,7 @@ You can also provide a configuration file: `config.yml`:
 
 ```yml
 name: cool-project
+version: 0.2.0
 ```
 
 And specify `-c config.yml` when executing the `ks` command.
@@ -120,7 +121,7 @@ In such case the generated `package.json` file is:
 ```json
 {
   "name": "cool-project",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
 }
 ```
@@ -152,5 +153,5 @@ Template:
 
 ## Todo
 
-- detect binary files
 - add unit tests
+- in boilerplate projects, show some instructions about kickstart in readme, but these instructions should be excluded from the target project.

@@ -29,7 +29,7 @@ A new project will be created at `output-directory/`, using `boilerplate-project
 
 Lots of projects look similar. For example, when I start a new JavaScript projects, I always created the following files: `README.md`, `package.json`, `.gitignore`, `.editorconfig`, `.babelrc`...etc.
 
-I wanted a command line utility to create those files for me. I checked the popular [Yeoman](http://yeoman.io/) project but failed to comprehend its work flow. I decided to create a new tool which is both flexible and straigtforward.
+I wanted a command line utility to create those files for me. I checked the popular [Yeoman](http://yeoman.io/) project but failed to comprehend its work flow. I decided to create a new tool which is both flexible and straightforward.
 
 
 ## How it works

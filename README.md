@@ -46,7 +46,7 @@ I wanted a command line utility to create those files for me. I checked the popu
 
 ## How it works
 
-First of all, ask yourself: do I or my users create similar projects again and again? If the answer is no, you probably don't need this project and you can stop reading on.
+First of all, ask yourself: do I or my users create similar projects again and again? If the answer is no, you probably don't need kickstart and you can stop reading on.
 
 If the answer is yes, create a boilerplate project for those similar projects to abstract the things that they have in common. For strings that each project might have a different value, define them as `{{ variable }}`.
 
@@ -154,4 +154,4 @@ Template:
 ## Todo
 
 - add unit tests
-- in boilerplate projects, show some instructions about kickstart in readme, but these instructions should be excluded from the target project.
+- in boilerplate projects, show some instructions about kickstart in readme, but these instructions should be excluded from target project.

@@ -32,6 +32,18 @@ Lots of projects look similar. For example, when I start a new JavaScript projec
 I wanted a command line utility to create those files for me. I checked the popular [Yeoman](http://yeoman.io/) project but failed to comprehend its work flow. I decided to create a new tool which is both flexible and straightforward.
 
 
+## Q & A
+
+- Is kickcstart for JavaScript projects only?
+    - Nope, it is for all kinds of projects no matter what programming languages they use.
+- Does kickstart support boilerlate projects with nested directory structure?
+    - Yes. Boilerplate project can have deeply nested directory strucutre.
+- What's the main differences between Yeoman and kickstart?
+    - A boilerplate project for Yeoman (they call it a generator project) must be a Node.js module. Kickstart doesn't have this requirement.
+        - Yeoman could generate projects for all kinds of languages but the boilerplate/generator project must be Node based. So developers who don't write JavaScript might have difficulty authoring a boilerplate/generator project.
+    - Kickstart is much simpler than Yeoman. In the other hand, it doesn't have as many features as Yeoman. Kickstart is pretty new and it is still under development.
+
+
 ## How it works
 
 First of all, create a boilerplate project. The project could be of any type, any programming language.

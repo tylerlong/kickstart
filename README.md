@@ -1,6 +1,6 @@
 # kickstart
 
-Kick start a project by generating code according to boilerplate.
+Kick start a project by generating code according to boilerplate. Defined a boilerplate project and reuse it again and again to kick start new projects. All kinds of projects are supported no matter what programming languages they use.
 
 It's a much simpler alternative to [Yeoman](http://yeoman.io/).
 
@@ -15,12 +15,12 @@ yarn global add kickstart-cli
 ## Usage
 
 ```
-ks -b boilerplate-project/ -c config.yml -o output-directory/
+ks -b boilerplate-project -c config.yml -o output-directory
 ```
 
-A new project will be created at `output-directory/`, using `boilerplate-project/` as boilerplate and `config.yml` as configuration file.
+A new project will be created at `output-directory`, using `boilerplate-project` as boilerplate and `config.yml` as configuration file.
 
-`-o output-directory/` is optional. By default it is '.'.
+`-o output-directory` is optional. By default it is '.'.
 
 `-c config.yml` is also optional. The default configuration file `boilerplate-project/kickstart.yml` will be used. If you do specify a configuration file, configuration items in your configuration file will override the default ones.
 
@@ -29,7 +29,7 @@ A new project will be created at `output-directory/`, using `boilerplate-project
 
 Lots of projects look similar. For example, when I start a new JavaScript projects, I always created the following files: `README.md`, `package.json`, `.gitignore`, `.editorconfig`, `.babelrc`...etc.
 
-I wanted a command line utility to create those files for me. I checked the popular [Yeoman](http://yeoman.io/) project but failed to comprehend its work flow. I decided to create a new tool which is both flexible and straightforward.
+I wanted a command line utility to create those files for me. I checked the popular [Yeoman](http://yeoman.io/) project but failed to comprehend its authoring workflow. I decided to create a new tool which is both flexible and straightforward.
 
 
 ## Q & A
@@ -41,7 +41,7 @@ I wanted a command line utility to create those files for me. I checked the popu
 - What's the main differences between Yeoman and kickstart?
     - A boilerplate project for Yeoman (they call it a generator project) must be a Node.js module. Kickstart doesn't have this requirement.
         - Yeoman could generate projects for all kinds of languages but the boilerplate/generator project must be Node based. So developers who don't write JavaScript might have difficulty authoring a boilerplate/generator project.
-    - Kickstart is much simpler than Yeoman. In the other hand, it doesn't have as many features as Yeoman. Kickstart is pretty new and it is still under development.
+    - Kickstart is much simpler than Yeoman. On the other hand, it doesn't have as many features as Yeoman. Kickstart is pretty new and it is still under development.
 
 
 ## How it works
@@ -54,10 +54,8 @@ For example, I can define a boilerplate for JavaScript projects with following d
 
 ```
 boilerplate-javascript-project
-    - package.json
-    - .editorconfig
-    - .babelrc
     - README.md
+    - package.json
     - .gitignore
     - kickstart.yml
 ```
@@ -94,10 +92,8 @@ The generated project:
 
 ```
 my-awesome-project
-    - package.json
-    - .editorconfig
-    - .babelrc
     - README.md
+    - package.json
     - .gitignore
 ```
 

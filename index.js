@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const commander = require('commander')
 const path = require('path')
 const fs = require('fs')
@@ -36,20 +35,17 @@ const defaultConfig = yaml.load(fs.readFileSync(path.join(commander.boilerplateP
 const config = R.merge(defaultConfig, yaml.load(fs.readFileSync(configFile, 'utf-8')))
 
 const outputDirectory = commander.outputDirectory || '.'
-if (!fs.existsSync(outputDirectory)) {
-  console.error(`'${outputDirectory}' doesn't exist`)
-  process.exit(1)
-}
-
-if (fs.readdirSync(outputDirectory).length > 0) {
+if (fs.existsSync(outputDirectory) && fs.readdirSync(outputDirectory).length > 0) {
   console.error(`Target directory is not empty`)
   process.exit(1)
 }
 
-const files = R.reject(item => item === 'kickstart.yml', R.concat(
-  glob.sync(path.join('**', '.*'), { cwd: boilerplateProject }),
-  glob.sync(path.join('**', '*.*'), { cwd: boilerplateProject })
-))
+const files = R.reject(item => item === 'kickstart.yml')(
+  R.concat(
+    glob.sync(path.join('**', '.*'), { cwd: boilerplateProject }),
+    glob.sync(path.join('**', '*.*'), { cwd: boilerplateProject })
+  )
+)
 
 R.forEach(file => {
   const content = nunjucks.render(file, config)

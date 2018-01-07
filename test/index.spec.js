@@ -3,30 +3,32 @@ const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
 const R = require('ramda')
+const isBinaryFile = require('isbinaryfile')
 
 const sourceDir = path.join(__dirname, 'boilerplate-project')
 const targetDir = path.join(__dirname, 'new-project')
 
-describe('binary files', () => {
-  const logoPath = path.join(targetDir, 'assets', 'logo.png')
-  test('should be copied to target directory', () => {
-    expect(fs.existsSync(logoPath)).toBe(true)
-  })
-  test('should be the same as source file', () => {
-    const sourcePath = path.join(sourceDir, 'assets', 'logo.png')
-    expect(fs.statSync(logoPath).size).toBe(fs.statSync(sourcePath).size)
-  })
-})
+const sourceFiles = R.pipe(
+  R.reject(item => item === 'kickstart.yml'),
+  R.sortBy(R.identity)
+)(glob.sync(path.join('**', '*'), { cwd: sourceDir, dot: true, nodir: true }))
+const targetFiles = R.sortBy(R.identity)(
+  glob.sync(path.join('**', '*'), { cwd: targetDir, dot: true, nodir: true })
+)
 
 describe('directory structure', () => {
   test('should equal source', () => {
-    let sourceFiles = glob.sync(path.join('**', '*'), { cwd: sourceDir, dot: true, nodir: true })
-    sourceFiles = R.pipe(
-      R.reject(item => item === 'kickstart.yml'),
-      R.sortBy(R.identity)
-    )(sourceFiles)
-    let targetFiles = glob.sync(path.join('**', '*'), { cwd: targetDir, dot: true, nodir: true })
-    targetFiles = R.sortBy(R.identity)(targetFiles)
     expect(targetFiles).toEqual(sourceFiles)
+  })
+})
+
+describe('binary file', () => {
+  test('should equal source', () => {
+    R.forEach(filename => {
+      if (isBinaryFile.sync(path.join(sourceDir, filename))) {
+        expect(fs.readFileSync(path.join(targetDir, filename)).toString())
+          .toEqual(fs.readFileSync(path.join(sourceDir, filename)).toString())
+      }
+    })(sourceFiles)
   })
 })

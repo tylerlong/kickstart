@@ -153,5 +153,4 @@ Template:
 
 ## Todo
 
-- add unit tests
 - in boilerplate projects, show some instructions about kickstart in readme, but these instructions should be excluded from target project.

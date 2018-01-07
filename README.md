@@ -154,4 +154,3 @@ Template:
 ## Todo
 
 - in boilerplate projects, show some instructions about kickstart in readme, but these instructions should be excluded from target project.
-- bug: cannot handle files without extensions, such `Gemfile`

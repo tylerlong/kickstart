@@ -9,7 +9,7 @@
   },
   "scripts": {
     "upgrade": "yarn-upgrade-all",
-    "test": "standard && rm -rf test/new-project && node index.js -b test/boilerplate-project/ -o test/new-project -c test/config.yml && jest"
+    "test": "rm -rf test/new-project && node index.js -b test/boilerplate-project/ -o test/new-project -c test/config.yml && jest"
   },
   "devDependencies": {
     "jest": "^22.0.4",

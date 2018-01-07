@@ -151,6 +151,9 @@ Template:
 ```
 
 
-## Todo
+### Comments
 
-- in boilerplate projects, show some instructions about kickstart in readme, but these instructions should be excluded from target project.
+You can write comments as `{# comments #}` which will be omitted from generated project.
+
+
+## Todo

@@ -1,6 +1,6 @@
 # kickstart
 
-Kick start a project by generating code according to boilerplate. Defined a boilerplate project and reuse it again and again to kick start new projects. All kinds of projects are supported no matter what programming languages they use.
+Kick start a project by generating code according to template. Defined a template project and reuse it again and again to kick start new projects. All kinds of projects are supported no matter what programming languages they use.
 
 It's a much simpler alternative to [Yeoman](http://yeoman.io/).
 
@@ -15,14 +15,14 @@ yarn global add kickstart-cli
 ## Usage
 
 ```
-ks -b boilerplate-project -c config.yml -o output-directory
+ks -b kickstart-project -c config.yml -o output-directory
 ```
 
-A new project will be created at `output-directory`, using `boilerplate-project` as boilerplate and `config.yml` as configuration file.
+A new project will be created at `output-directory`, using `kickstart-project` as template and `config.yml` as configuration file.
 
 `-o output-directory` is optional. By default it is '.', a.k.a. the current directory.
 
-`-c config.yml` is also optional. The default configuration file `boilerplate-project/kickstart.yml` will be used. If you do specify a configuration file, configuration items in your configuration file will override the default ones.
+`-c config.yml` is also optional. The default configuration file `kickstart-project/kickstart.yml` will be used. If you do specify a configuration file, configuration items in your configuration file will override the default ones.
 
 
 ## Why?
@@ -34,13 +34,13 @@ I wanted a command line utility to create those files for me. I checked the popu
 
 ## Q & A
 
-- Is kickcstart for JavaScript projects only?
+- Is kickstart for JavaScript projects only?
     - Nope, it is for all kinds of projects no matter what programming languages they use.
-- Does kickstart support boilerlate projects with nested directory structure?
-    - Yes. Boilerplate project can have deeply nested directory strucutre.
+- Does kickstart support template projects with nested directory structure?
+    - Yes. Template project can have deeply nested directory strucutre.
 - What's the main differences between Yeoman and kickstart?
-    - A boilerplate project for Yeoman (they call it a generator project) must be a Node.js module. Kickstart doesn't have this requirement.
-        - Yeoman could generate projects for all kinds of languages but the boilerplate/generator project must be Node based. So developers who don't write JavaScript might have difficulty authoring a boilerplate/generator project.
+    - A template project for Yeoman (they call it a generator project) must be a Node.js module. Kickstart doesn't have this requirement.
+        - Yeoman could generate projects for all kinds of languages but the template/generator project must be Node based. So developers who don't write JavaScript might have difficulty authoring a template/generator project.
     - Kickstart is much simpler than Yeoman. On the other hand, it doesn't have as many features as Yeoman. Kickstart is pretty new and it is still under development.
 
 
@@ -48,19 +48,19 @@ I wanted a command line utility to create those files for me. I checked the popu
 
 First of all, ask yourself: do I or my users create similar projects again and again? If the answer is no, you probably don't need kickstart and you can stop reading on.
 
-If the answer is yes, create a boilerplate project for those similar projects to abstract the things that they have in common. For strings that each project might have a different value, define them as `{{ variable }}`.
+If the answer is yes, create a template project for those similar projects to abstract the things that they have in common. For strings that each project might have a different value, define them as `{{ variable }}`.
 
-For example, I can define a boilerplate for JavaScript projects with the following directory structure:
+For example, I can define a template for JavaScript projects with the following directory structure:
 
 ```
-boilerplate-javascript-project
+kickstart-javascript
     - README.md
     - package.json
     - .gitignore
     - kickstart.yml
 ```
 
-Please note that, a boilerplate project must have a `kickstart.yml` file in its root directory.
+Please note that, a template project must have a `kickstart.yml` file in its root directory.
 
 A sample `package.json` file:
 
@@ -85,7 +85,7 @@ Run the following command to generate a new project:
 ```
 mkdir my-awesome-project
 cd my-awesome-project
-ks -b ../boilerplate-javascript-project/
+ks -b ../kickstart-javascript/
 ```
 
 The generated project:

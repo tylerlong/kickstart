@@ -5,7 +5,7 @@ const glob = require('glob')
 const R = require('ramda')
 const isBinaryFile = require('isbinaryfile')
 
-const sourceDir = path.join(__dirname, 'boilerplate-project')
+const sourceDir = path.join(__dirname, 'kickstart-project')
 const targetDir = path.join(__dirname, 'new-project')
 
 const sourceFiles = R.pipe(

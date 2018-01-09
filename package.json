@@ -1,7 +1,7 @@
 {
   "name": "kickstart-cli",
   "version": "0.3.0",
-  "description": "Kick start a project by generating code according to boilerplate.",
+  "description": "Kick start a project by generating code according to template.",
   "license": "MIT",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "upgrade": "yarn-upgrade-all",
-    "test": "rm -rf test/new-project && node index.js -b test/boilerplate-project/ -o test/new-project -c test/config.yml && jest"
+    "test": "rm -rf test/new-project && node index.js -k test/kickstart-project/ -o test/new-project -c test/config.yml && jest"
   },
   "devDependencies": {
     "jest": "^22.0.4",

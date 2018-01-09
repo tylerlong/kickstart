@@ -41,7 +41,15 @@ if (fs.existsSync(outputDirectory) && fs.readdirSync(outputDirectory).length > 0
   process.exit(1)
 }
 
-const files = R.reject(item => item === 'kickstart.yml', glob.sync(path.join('**', '*'), { cwd: kickstartProject, dot: true, nodir: true }))
+const files = R.reject(item => item === 'kickstart.yml', glob.sync(path.join('**', '*'), {
+  cwd: kickstartProject,
+  dot: true,
+  nodir: true,
+  ignore: [
+    path.join('.git', '**', '*'),
+    path.join('node_modules', '**', '*')
+  ]
+}))
 R.forEach(file => {
   const targetFile = path.join(outputDirectory, file)
   mkdirp.sync(path.dirname(targetFile))

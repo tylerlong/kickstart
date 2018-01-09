@@ -14,7 +14,7 @@
   "devDependencies": {
     "jest": "^22.0.4",
     "standard": "^10.0.3",
-    "yarn-upgrade-all": "^0.2.1"
+    "yarn-upgrade-all": "^0.3.0"
   },
   "dependencies": {
     "commander": "^2.12.2",

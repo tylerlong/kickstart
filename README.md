@@ -15,7 +15,7 @@ yarn global add kickstart-cli
 ## Usage
 
 ```
-ks -b kickstart-project -c config.yml -o output-directory
+ks -k kickstart-project -c config.yml -o output-directory
 ```
 
 A new project will be created at `output-directory`, using `kickstart-project` as template and `config.yml` as configuration file.
@@ -85,7 +85,7 @@ Run the following command to generate a new project:
 ```
 mkdir my-awesome-project
 cd my-awesome-project
-ks -b ../kickstart-javascript/
+ks -k ../kickstart-javascript/
 ```
 
 The generated project:

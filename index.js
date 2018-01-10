@@ -3,7 +3,7 @@ const commander = require('commander')
 const path = require('path')
 const fs = require('fs')
 const R = require('ramda')
-const glob = require('glob')
+const glob = require('globby')
 const nunjucks = require('nunjucks')
 const mkdirp = require('mkdirp')
 const yaml = require('js-yaml')
@@ -45,9 +45,9 @@ const files = R.reject(item => item === 'kickstart.yml', glob.sync(path.join('**
   cwd: kickstartProject,
   dot: true,
   nodir: true,
+  gitignore: true,
   ignore: [
-    path.join('.git', '**', '*'),
-    path.join('node_modules', '**', '*')
+    path.join('.git', '**', '*')
   ]
 }))
 R.forEach(file => {

@@ -157,5 +157,3 @@ You can write comments as `{# comments #}` which will be omitted from generated 
 
 
 ## Todo
-
-- ignore everything in `.gitingore` of kickstart project.

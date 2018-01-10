@@ -1,7 +1,7 @@
 /* eslint-env jest */
 const fs = require('fs')
 const path = require('path')
-const glob = require('glob')
+const glob = require('globby')
 const R = require('ramda')
 const isBinaryFile = require('isbinaryfile')
 
@@ -11,9 +11,14 @@ const targetDir = path.join(__dirname, 'new-project')
 const sourceFiles = R.pipe(
   R.reject(item => item === 'kickstart.yml'),
   R.sortBy(R.identity)
-)(glob.sync(path.join('**', '*'), { cwd: sourceDir, dot: true, nodir: true }))
+)(glob.sync(path.join('**', '*'), { cwd: sourceDir,
+  dot: true,
+  nodir: true,
+  gitignore: true,
+  ignore: [ path.join('.git', '**', '*') ]
+}))
 const targetFiles = R.sortBy(R.identity)(
-  glob.sync(path.join('**', '*'), { cwd: targetDir, dot: true, nodir: true })
+  glob.sync(path.join('**', '*'), { cwd: targetDir, dot: true, nodir: true, gitignore: false })
 )
 
 describe('directory structure', () => {

@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "commander": "^2.12.2",
+    "globby": "^7.1.1",
     "isbinaryfile": "^3.0.2",
     "js-yaml": "^3.10.0",
     "mkdirp": "^0.5.1",

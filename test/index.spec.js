@@ -15,7 +15,7 @@ const sourceFiles = R.pipe(
   dot: true,
   nodir: true,
   gitignore: true,
-  ignore: [ path.join('.git', '**', '*') ]
+  ignore: [ path.join('**', '.git', '**', '*') ]
 }))
 const targetFiles = R.sortBy(R.identity)(
   glob.sync(path.join('**', '*'), { cwd: targetDir, dot: true, nodir: true, gitignore: false })

@@ -47,7 +47,7 @@ const files = R.reject(item => item === 'kickstart.yml', glob.sync(path.join('**
   nodir: true,
   gitignore: true,
   ignore: [
-    path.join('.git', '**', '*')
+    path.join('**', '.git', '**', '*')
   ]
 }))
 R.forEach(file => {

@@ -1,6 +1,6 @@
 {
   "name": "kickstart-cli",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Kick start a project by generating code according to template.",
   "license": "MIT",
   "main": "index.js",

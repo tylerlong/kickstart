@@ -13,7 +13,6 @@ const pkg = require('./package.json')
 
 commander.version(pkg.version)
   .option('-k --kickstartProject <kickstartProject>', 'kickstart project')
-  .option('-c --configFile [configFile]', 'config file')
   .option('-o --outputDirectory [outputDirectory]', 'output directory')
   .parse(process.argv)
 
@@ -27,13 +26,11 @@ if (!fs.existsSync(kickstartProject)) {
 }
 nunjucks.configure(kickstartProject, { autoescape: false })
 
-const configFile = commander.configFile || path.join(commander.kickstartProject, 'kickstart.yml')
-if (!fs.existsSync(configFile)) {
-  console.error(`'${configFile}' doesn't exist`)
-  process.exit(1)
+const configFile = path.join(commander.kickstartProject, 'kickstart.yml')
+let config = {}
+if (fs.existsSync(configFile)) {
+  config = yaml.load(fs.readFileSync(configFile, 'utf-8'))
 }
-const defaultConfig = yaml.load(fs.readFileSync(path.join(commander.kickstartProject, 'kickstart.yml'), 'utf-8'))
-const config = R.merge(defaultConfig, yaml.load(fs.readFileSync(configFile, 'utf-8')))
 
 const outputDirectory = commander.outputDirectory || '.'
 if (fs.existsSync(outputDirectory) && fs.readdirSync(outputDirectory).length > 0) {

@@ -56,8 +56,8 @@ describe('dynamic file', () => {
   test('package.json', () => {
     expect(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf-8').trim()).toEqual(`
 {
-  "name": "cool-project",
-  "version": "0.2.0",
+  "name": "my-app",
+  "version": "0.1.0",
   "license": "MIT"
 }
 `.trim())

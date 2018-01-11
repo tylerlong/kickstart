@@ -15,14 +15,19 @@ yarn global add kickstart-cli
 ## Usage
 
 ```
-ks -k kickstart-project -c config.yml -o output-directory
+ks -k kickstart-project -o output-directory
 ```
 
-A new project will be created at `output-directory`, using `kickstart-project` as template and `config.yml` as configuration file.
+A new project will be created at `output-directory`, using `kickstart-project` as template.
 
-`-o output-directory` is optional. By default it is '.', a.k.a. the current directory.
+`-o output-directory` is optional. By default it is `.`, a.k.a. the current directory.
 
-`-c config.yml` is also optional. The default configuration file `kickstart-project/kickstart.yml` will be used. If you do specify a configuration file, configuration items in your configuration file will override the default ones.
+
+## Features
+
+- Support projects in all programming languages.
+- Support any project to be used as template, even they are not created for scaffolding purpose.
+- Support templating, thanks to [nunjucks](https://mozilla.github.io/nunjucks/templating.html).
 
 
 ## Why?
@@ -42,6 +47,10 @@ I wanted a command line utility to create those files for me. I checked the popu
     - A template project for Yeoman (they call it a generator project) must be a Node.js module. Kickstart doesn't have this requirement.
         - Yeoman could generate projects for all kinds of languages but the template/generator project must be Node based. So developers who don't write JavaScript might have difficulty authoring a template/generator project.
     - Kickstart is much simpler than Yeoman. On the other hand, it doesn't have as many features as Yeoman. Kickstart is pretty new and it is still under development.
+- Why is kickstart better than `cp -r source-project target-directory` ?
+    - kickstart won't copy `.git/`
+    - kickstart won't copy files/directories specified in `.gitignore`
+    - kickstart supports configuration and templating.
 
 
 ## How it works
@@ -60,7 +69,7 @@ kickstart-javascript
     - kickstart.yml
 ```
 
-Please note that, a template project must have a `kickstart.yml` file in its root directory.
+Please note that, a template project usually has a `kickstart.yml` file in its root directory. If no `kickstart.yml` file is found, an empty one will be used instead. Thus allows any project to be used as a template project.
 
 A sample `package.json` file:
 
@@ -83,9 +92,8 @@ license: MIT
 Run the following command to generate a new project:
 
 ```
-mkdir my-awesome-project
-cd my-awesome-project
-ks -k ../kickstart-javascript/
+mkdir my-awesome-project && cd my-awesome-project
+ks -k /path/to/kickstart-javascript/
 ```
 
 The generated project:
@@ -107,14 +115,13 @@ Generated `package.json` file has the following content:
 }
 ```
 
-You can also provide a configuration file: `config.yml`:
+You can also edit the `kickstart.yml` file as below before executing the `ks` command:
 
 ```yml
 name: cool-project
 version: 0.2.0
+license: MIT
 ```
-
-And specify `-c config.yml` when executing the `ks` command.
 
 In such case the generated `package.json` file is:
 
@@ -133,7 +140,7 @@ In such case the generated `package.json` file is:
 
 You can use some of its [adanvaced features](https://mozilla.github.io/nunjucks/templating.html). Sample:
 
-`config.yml`:
+`kickstart.yml`:
 
 ```yml
 food:
@@ -153,15 +160,13 @@ Template:
 
 ### Comments
 
-You can write comments as `{# comments #}` which will be omitted from generated project.
+You can write comments as `{# comments #}` which will be omitted when generating code.
 
 
 ## Todo
 
-- Don't support `-c --config`. Tell user to edit `kickstart.yml` instead.
-- Support every project as template project
-    - If there is no config file, assume there is an empty one
 - Each template project must be a runnable project itself
 - Toml + regex as config file
     - Just use string match, no regex
     - Then how to support `if`, `for`...etc?
+        - Can we give up these adavanced templating features?

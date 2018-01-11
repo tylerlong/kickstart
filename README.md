@@ -157,3 +157,11 @@ You can write comments as `{# comments #}` which will be omitted from generated 
 
 
 ## Todo
+
+- Don't support `-c --config`. Tell user to edit `kickstart.yml` instead.
+- Support every project as template project
+    - If there is no config file, assume there is an empty one
+- Each template project must be a runnable project itself
+- Toml + regex as config file
+    - Just use string match, no regex
+    - Then how to support `if`, `for`...etc?

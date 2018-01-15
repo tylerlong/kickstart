@@ -10,6 +10,7 @@ const targetDir = path.join(__dirname, 'new-project')
 
 const sourceFiles = R.pipe(
   R.reject(item => item === 'kickstart.yml'),
+  R.reject(item => R.contains('{{', item) || R.contains('{%', item) || R.contains('{#', item)),
   R.sortBy(R.identity)
 )(glob.sync(path.join('**', '*'), { cwd: sourceDir,
   dot: true,
@@ -22,8 +23,8 @@ const targetFiles = R.sortBy(R.identity)(
 )
 
 describe('directory structure', () => {
-  test('should equal source', () => {
-    expect(targetFiles).toEqual(sourceFiles)
+  test('should equal source', () => { // sourceFiles is a subset of targetFiles
+    expect(R.difference(sourceFiles, targetFiles).length).toBe(0)
   })
 })
 

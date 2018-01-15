@@ -1,6 +1,6 @@
 {
   "name": "kickstart-cli",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Kick start a project by generating code according to template.",
   "license": "MIT",
   "main": "index.js",
@@ -12,12 +12,12 @@
     "test": "rm -rf test/new-project && node index.js -k test/kickstart-project/ -o test/new-project && jest"
   },
   "devDependencies": {
-    "jest": "^22.0.4",
+    "jest": "^22.0.6",
     "standard": "^10.0.3",
     "yarn-upgrade-all": "^0.3.0"
   },
   "dependencies": {
-    "commander": "^2.12.2",
+    "commander": "^2.13.0",
     "globby": "^7.1.1",
     "isbinaryfile": "^3.0.2",
     "js-yaml": "^3.10.0",

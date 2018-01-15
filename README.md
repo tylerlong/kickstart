@@ -158,6 +158,17 @@ Template:
 ```
 
 
+### Templating in directory/file name
+
+You can use templating in directory/file name.
+
+For example:
+
+```
+src/{{ serviceName }}/handler.js
+```
+
+
 ### Comments
 
 You can write comments as `{# comments #}` which will be omitted when generating code.

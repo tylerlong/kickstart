@@ -48,7 +48,7 @@ const files = R.reject(item => item === 'kickstart.yml', glob.sync(path.join('**
   ]
 }))
 R.forEach(file => {
-  const targetFile = path.join(outputDirectory, file)
+  const targetFile = nunjucks.renderString(path.join(outputDirectory, file), config)
   mkdirp.sync(path.dirname(targetFile))
   const sourceFile = path.join(kickstartProject, file)
   if (isBinaryFile.sync(sourceFile)) {

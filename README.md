@@ -4,6 +4,8 @@ Kick start a project by generating code according to template. Defined a templat
 
 It's a much simpler alternative to [Yeoman](http://yeoman.io/).
 
+### [Awesome kickstart](https://github.com/tylerlong/awesome-kickstart)
+
 
 ## Install
 
